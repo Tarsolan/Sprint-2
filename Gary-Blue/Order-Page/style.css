@@ -267,7 +267,8 @@ main h1 {
 }
 
 #finish,
-#place-order-button {
+#place-order-button,
+#newOrderButton {
   border-radius: 8px;
   padding: 10px 20px;
   background-color: rgba(15, 15, 15, 1);
@@ -276,9 +277,12 @@ main h1 {
   cursor: pointer;
   font-size: 16px;
   transition: 0.2s;
+  width: auto;
 }
 
-#finish:hover {
+#finish:hover,
+#newOrderButton:hover,
+#place-order-button:hover {
   background-color: yellow;
   color: black;
   transition: 0.2s;
@@ -289,6 +293,11 @@ main h1 {
   width: 90%;
   /* width: 208px;
   height: 80px; */
+}
+
+#ready-new {
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Customer Info Form */
