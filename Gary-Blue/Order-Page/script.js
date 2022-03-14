@@ -1,8 +1,10 @@
 var food_item = document.getElementById("food-item");
 var confirm_button = document.getElementById("confirm-quantity");
 var order_index = 1;
+var place_order_button = document.querySelector("#place-order-button");
 
 var new_order_button = document.querySelector("#newOrderButton");
+var form = document.querySelector("#order-form");
 
 function newOrder() {
   {
@@ -90,6 +92,7 @@ function newOrder() {
       max="5"
       min="0"
       value="0"
+      class="food-quantity"
       onchange="quantitySelect(this.value, ${order_index})"
     />
   </div>
@@ -102,6 +105,8 @@ function newOrder() {
 
 function handleSelect(food_object, occurance) {
   var food_price = document.getElementsByClassName("food-price")[occurance];
+  var food_name =
+    document.getElementsByClassName("item-select")[occurance].innerText;
   switch (food_object) {
     case "The Big Gary":
       food_price.innerHTML = `$${14.75}`;
@@ -206,4 +211,92 @@ function calcSubTotal() {
   total.innerHTML = `$${sub_total.toFixed(2)}`;
   hst.innerHTML = `$${hst_owing.toFixed(2)}`;
   order_total.innerHTML = `$${final_total.toFixed(2)}`;
+}
+
+var cart = document.querySelector("#shopping-cart");
+
+class Order {
+  constructor(name, quantity, price, total) {
+    this.name = name;
+    this.quantity = quantity;
+    this.price = price;
+    this.total = total;
+  }
+}
+
+class UI {
+  static addOrderToList(order) {
+    var orderName = document.createElement("div");
+    orderName.className = "grid-item-name";
+    var orderQuant = document.createElement("div");
+    orderQuant.className = "grid-item-quantity";
+    var orderPrice = document.createElement("div");
+    orderPrice.className = "grid-item-price";
+    var orderTotal = document.createElement("div");
+    orderTotal.className = "grid-item-total";
+    var del = document.createElement("div");
+    del.className = "delete";
+
+    orderName.innerHTML = `${order.name}`;
+    orderQuant.innerHTML = `${order.quantity}`;
+    orderPrice.innerHTML = `$${order.price}`;
+    orderTotal.innerHTML = `$${order.total}`;
+    del.innerHTML = `<a href="">X</a>`;
+
+    cart.appendChild(orderName);
+    cart.appendChild(orderQuant);
+    cart.appendChild(orderPrice);
+    cart.appendChild(orderTotal);
+    cart.appendChild(del);
+  }
+}
+
+class ShoppingCart {
+  // To get existing orders from storage
+  static getOrders() {
+    var orders;
+    if (localStorage.getItem("orders") === null) {
+      orders = [];
+    } else {
+      orders = JSON.parse(localStorage.getItem("orders"));
+    }
+    return orders;
+  }
+
+  // To add new orders
+  static addOrders(order) {
+    var orders = ShoppingCart.getOrders();
+    orders.push(order);
+    localStorage.setItem("orders", JSON.stringify(orders));
+  }
+
+  // To display already stored orders
+  static displayOrders() {
+    var orders = ShoppingCart.getOrders();
+    var order_number = 1;
+    orders.forEach(function (order) {
+      var order_seperator = document.createElement("div");
+      order_seperator.className = "order_number";
+      order_seperator.innerHTML = `Order #: ${order_number}`;
+      cart.appendChild(order_seperator);
+      order_number++;
+      order.forEach(function (detail) {
+        UI.addOrderToList(detail);
+      });
+    });
+  }
+
+  // To remove an order from storage
+  static removeOrder(line) {
+    var orders = Store.getOrders();
+
+    books.forEach(function (book, index) {
+      if (book.isbn === isbn) {
+        console.log(`Isbn: ${isbn}`);
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem("books", JSON.stringify(books));
+  }
 }

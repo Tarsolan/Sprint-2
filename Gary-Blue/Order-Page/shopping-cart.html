@@ -1,0 +1,111 @@
+<!-- Software Development Semester 2, Keyin College -->
+<!-- Web Design: Sprint 1 -->
+<!-- Developers: Alex Ridgeley and David Bishop (Team 1) -->
+<!-- Date: February 25, 2022 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Combo&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <div id="header-container">
+        <a href="/Gary-Blue/Main-Page/homepage.html">
+          <div id="header-left">
+            <img
+              src="/Gary-Blue/Pictures/Blue-Logo.avif"
+              alt="Restaurant Logo"
+            />
+            <div id="text-container">
+              <h1 id="logo-text-top">Gary Blue's Diner</h1>
+              <h2 id="logo-text-bottom">Fresh and ready to serve!</h2>
+            </div>
+          </div>
+        </a>
+        <div id="header-right">
+          <form action="/Gary-Blue/Menu/menu.html">
+            <input id="menu-button" type="submit" value="Menu" />
+          </form>
+          <form action="/Gary-Blue/Order-Page/index.html">
+            <input id="order-now-button" type="submit" value="Order Now!" />
+          </form>
+          <form action="shopping-cart.html">
+            <button id="shopping-cart-button">
+              <a href=""
+                ><i class="fa fa-shopping-cart" style="font-size: 24px"></i
+              ></a>
+            </button>
+          </form>
+        </div>
+      </div>
+    </header>
+
+    <nav>
+      <span><a href="/Gary-Blue/Error-Page/error.html">About Us</a></span>
+      <span><a href="/Gary-Blue/Error-Page/error.html">Our Employees</a></span>
+      <span
+        ><a href="/Gary-Blue/Error-Page/error.html">Community Outreach</a></span
+      >
+      <span
+        ><a href="/Gary-Blue/Error-Page/error.html">Global Delivery</a></span
+      >
+    </nav>
+
+    <main>
+      <h1>Shopping Cart</h1>
+      <section>
+        <div id="shopping-cart">
+          <div class="grid-head">Item Name</div>
+          <div class="grid-head">Quantity</div>
+          <div class="grid-head">Price</div>
+          <div class="grid-head">Total</div>
+          <div class="grid-head" id="delete"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <nav id="footer">
+        <span><a href="/Gary-Blue/Menu/menu.html">Menu</a></span>
+        <span
+          ><a href="/Gary-Blue/Error-Page/error.html">Our Employees</a></span
+        >
+        <span
+          ><a href="/Gary-Blue/Error-Page/error.html"
+            >Community Outreach</a
+          ></span
+        >
+        <span
+          ><a href="/Gary-Blue/Error-Page/error.html">Global Delivery</a></span
+        >
+      </nav>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", ShoppingCart.displayOrders);
+    </script>
+  </body>
+</html>

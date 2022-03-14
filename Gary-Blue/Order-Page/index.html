@@ -25,6 +25,10 @@
       href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
   </head>
   <body>
     <header>
@@ -47,6 +51,13 @@
           </form>
           <form action="/Gary-Blue/Order-Page/index.html">
             <input id="order-now-button" type="submit" value="Order Now!" />
+          </form>
+          <form action="shopping-cart.html">
+            <button id="shopping-cart">
+              <a href=""
+                ><i class="fa fa-shopping-cart" style="font-size: 24px"></i
+              ></a>
+            </button>
           </form>
         </div>
       </div>
@@ -75,7 +86,7 @@
           <div class="last-header"><h2>Total</h2></div>
         </div>
 
-        <form action="orders.txt" method="get">
+        <form id="order-form">
           <div id="orders">
             <div class="order">
               <div>
@@ -150,12 +161,13 @@
               </div>
               <div>
                 <input
-                  id="food-quantity-0"
+                  id="food-quantity"
                   type="number"
                   style="max-width: 3ch"
                   max="5"
                   min="0"
                   value="0"
+                  class="food-quantity"
                   onchange="quantitySelect(this.value, 0)"
                 />
               </div>
@@ -164,6 +176,17 @@
             </div>
           </div>
 
+          <div>
+            <div class="grid-orderButton">
+              <input
+                type="button"
+                name="New Item"
+                id="newOrderButton"
+                value="&plus;"
+                onclick="newOrder()"
+              />
+            </div>
+          </div>
           <!-- Totals and Customer Info -->
 
           <div id="total">
@@ -224,7 +247,6 @@
                       name="email"
                       autocomplete="email"
                       placeholder="Email Address"
-                      required
                     />
                   </div>
                 </div>
@@ -345,7 +367,7 @@
                   <div>
                     <label for="cc-security">Security Code:</label>
                     <input
-                      type="number"
+                      type="text"
                       id="cc-security"
                       name="security"
                       placeholder="CSC"
@@ -364,15 +386,6 @@
                   type="button"
                   value="Ready to Order!"
                   onclick="calcSubTotal()"
-                />
-              </div>
-              <div class="grid-orderButton">
-                <input
-                  type="button"
-                  name="New Item"
-                  id="newOrderButton"
-                  value="Add Item"
-                  onclick="newOrder()"
                 />
               </div>
             </div>
@@ -395,7 +408,7 @@
               <!-- Obviously in a real program, this wouldn't be a reset button - I just set it to do this for the purposes of our Sprint! -->
               <input
                 id="place-order-button"
-                type="reset"
+                type="submit"
                 value="Place Order!"
               />
             </div>
@@ -421,5 +434,29 @@
       </nav>
     </footer>
     <script src="script.js"></script>
+    <script>
+      form.addEventListener("submit", function (e) {
+        // e.preventDefault();
+        var orders = document.querySelectorAll(".order");
+
+        var name = document.querySelectorAll(".item-select");
+        var quantity = document.querySelectorAll(".food-quantity");
+        var price = document.querySelectorAll(".food-price");
+        var total = document.querySelectorAll(".food-total");
+        var order_details = [];
+
+        for (i = 0; i < orders.length; i++) {
+          var order = new Order(
+            name[i].options[name[i].selectedIndex].text,
+            quantity[i].value,
+            price[i].innerText.replace("$", ""),
+            total[i].innerText.replace("$", "")
+          );
+          order_details.push(order);
+        }
+        ShoppingCart.addOrders(order_details);
+        alert("Order successfully placed!");
+      });
+    </script>
   </body>
 </html>

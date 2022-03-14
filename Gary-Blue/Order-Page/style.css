@@ -87,7 +87,8 @@ header {
 }
 
 /* Header Right Side (Buttons) */
-#header-right input {
+#header-right input,
+#header-right button {
   transition: 0.2s;
   background: #ffb800;
   border: 3px solid black;
@@ -111,7 +112,17 @@ header {
   color: black;
 }
 
-#header-right input:hover {
+#header-right button {
+  width: fit-content;
+}
+
+#header-right button a {
+  color: black;
+}
+
+#header-right input:hover,
+#header-right button:hover,
+#header-right button a:hover {
   transition: 0.2s;
   background-color: rgba(0, 97, 0, 0.5);
   color: white;
@@ -267,8 +278,7 @@ main h1 {
 }
 
 #finish,
-#place-order-button,
-#newOrderButton {
+#place-order-button {
   border-radius: 8px;
   padding: 10px 20px;
   background-color: rgba(15, 15, 15, 1);
@@ -281,7 +291,6 @@ main h1 {
 }
 
 #finish:hover,
-#newOrderButton:hover,
 #place-order-button:hover {
   background-color: yellow;
   color: black;
@@ -297,7 +306,25 @@ main h1 {
 
 #ready-new {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+}
+
+#newOrderButton {
+  border-radius: 8px;
+  /* padding: 10px 15px; */
+  background-color: rgba(15, 15, 15, 1);
+  color: white;
+  border: 2px solid rgba(255, 184, 0, 1);
+  cursor: pointer;
+  font-size: 24px;
+  transition: 0.2s;
+  width: auto;
+}
+
+#newOrderButton:hover {
+  background-color: yellow;
+  color: black;
+  transition: 0.2s;
 }
 
 /* Customer Info Form */
@@ -353,4 +380,46 @@ main h1 {
   background-color: rgba(58, 124, 222, 1);
   color: #ffb800;
   font-size: 8px;
+}
+
+/* Shopping Cart CSS */
+
+h2 {
+  text-align: center;
+}
+
+#shopping-cart {
+  display: grid;
+  grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr 0.1fr;
+  row-gap: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.grid-head {
+  font-weight: 700;
+  font-size: 16pt;
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+.order_number {
+  grid-column: 1/6;
+  margin-top: 1%;
+  font-weight: 700;
+}
+
+.grid-item-name,
+.grid-item-quantity,
+.grid-item-price,
+.grid-item-total,
+.delete {
+  color: black;
+  text-align: center;
+  /* margin: 10px 0px; */
+}
+
+.grid-item-name {
+  text-align: left;
+  margin-left: 15%;
 }
